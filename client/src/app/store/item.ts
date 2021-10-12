@@ -1,4 +1,4 @@
-export class Item{
+export class Item {
   _id?: string;
   product: string;
   color: string;

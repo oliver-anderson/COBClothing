@@ -8,7 +8,7 @@ import { Item } from './item';
   styleUrls: ['./store.component.css'],
   providers: [StoreService]
 })
-export class StoreComponent {
+export class StoreComponent implements OnInit {
   items: Item[];
   item: Item;
   product: string;
@@ -16,14 +16,12 @@ export class StoreComponent {
   size: string;
   price: number;
 
-  constructor(private storeService: StoreService) {
-
-  }
+  constructor(private storeService: StoreService) { }
 
   ngOnInit() {
+
     this.storeService.getItem()
-      .subscribe(items =>
-      this.items = items);
+      .subscribe(items => this.items = items);
   }
 
 }
