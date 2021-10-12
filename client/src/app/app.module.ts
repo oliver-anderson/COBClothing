@@ -10,6 +10,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { StoreComponent } from './store/store.component';
+import { AboutComponent } from './about/about.component';
+import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { StoreComponent } from './store/store.component';
     HeaderComponent,
     HomeComponent,
     StoreComponent,
-    FooterComponent
+    AboutComponent,
+    CartComponent,
+    FooterComponent,
+    CheckoutComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,
