@@ -1,27 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { StoreService } from './store.service';
-import { Item } from './item';
+import { Item } from './item.model';
+/*import { StoreService } from './store.service';
+import { CartService } from '../cart/cart.service';*/
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.css'],
-  providers: [StoreService]
+  providers: []
 })
 export class StoreComponent implements OnInit {
-  items: Item[];
-  item: Item;
-  product: string;
-  color: string;
-  size: string;
-  price: number;
 
-  constructor(private storeService: StoreService) { }
+  items?: Item[];
 
-  ngOnInit() {
+  constructor(private dataService: DataService) { }
 
-    this.storeService.getItem()
-      .subscribe(items => this.items = items);
+  ngOnInit(): void {
+    this.retrieveItems();
   }
 
+  retrieveItems(): void {
+    this.dataService.getAllItems()
+      .subscribe(
+        data => {
+          this.items = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+  }
 }

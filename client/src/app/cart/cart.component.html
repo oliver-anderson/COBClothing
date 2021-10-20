@@ -1,21 +1,11 @@
-<div>
-  <h1>This is the cart component</h1>
+<div id="wrapper">
+  <div>
+    <h1>This is the cart component</h1>
+  </div>
+
+  <div class="cart" *ngFor="let cart of carts; let i = index">
+        {{ cart.items }} <br />
+        {{ cart.total }} <br />
+  </div>
   <button type="button" routerLink="/checkout">Checkout</button>
 </div>
-
-<!--<div>
-  <div *ngFor="let item of items">
-    <div>
-      {{item.product}}
-    </div>
-    <div>
-      {{item.color}}
-    </div>
-    <div>
-      {{item.size}}
-    </div>
-    <div>
-      {{item.price}}
-    </div>
-  </div>
-</div>-->

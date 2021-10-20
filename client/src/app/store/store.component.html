@@ -1,24 +1,12 @@
 <div id="wrapper">
-
   <div>
     <h1>This is the store component</h1>
   </div>
 
-  <div>
-    <div *ngFor="let item of items" class="item">
-      <div>
-        {{item.product}}
-      </div>
-      <div>
-        {{item.color}}
-      </div>
-      <div>
-        {{item.size}}
-      </div>
-      <div>
-        {{item.price}}
-      </div>
-      <button>Add to cart</button>
-    </div>
+  <div class="item" *ngFor="let item of items; let i = index">
+        {{ item.product }} <br />
+        {{ item.color }} <br />
+        {{ item.size }} <br />
+        {{ item.price }}
   </div>
 </div>

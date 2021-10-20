@@ -1,27 +1,46 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from './cart.service';
-/*import { Item } from './item';*/
+import { Cart } from './cart.model';
+import { Item } from '../store/item.model';
+//import { CartService } from './cart.service';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
-  providers: [CartService]
+  providers: []
 })
 export class CartComponent implements OnInit {
-  /*items: Item[];
-  item: Item;
-  product: string;
-  color: string;
-  size: string;
-  price: number;*/
 
-  constructor(/*private cartService: CartService*/) { }
+  carts?: Cart[];
 
-  ngOnInit() {
+  constructor(private dataService: DataService) { }
 
-    /*this.storeService.getCart()
-      .subscribe(items => this.items = items);*/
+  ngOnInit(): void {
+    this.retrieveCart();
   }
 
+  retrieveCart(): void {
+    this.dataService.getAllCarts()
+      .subscribe(
+        data => {
+          this.carts = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
+  removeAllCarts(): void {
+    this.dataService.deleteAllCarts()
+      .subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
 }

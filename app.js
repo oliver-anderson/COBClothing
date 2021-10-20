@@ -1,4 +1,4 @@
-//import modules
+/*//import modules
 var express = require('express');
 var cors = require('cors');
 var bodyparser = require('body-parser');
@@ -38,6 +38,8 @@ app.get('/',(req, res)=>{
   res.send('foobar');
 });
 
+require('./routes/cart.routes')(app, {});
+
 app.listen(port,()=>{
   console.log('Server started at port: '+port);
-});
+});*/
