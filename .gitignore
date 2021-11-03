@@ -1,3 +1,6 @@
 node_modules/
 client/node_modules
 MongoDB/
+run-angular.bat
+run-express.bat
+run-mongod.bat
