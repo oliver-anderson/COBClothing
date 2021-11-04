@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-.fill {
+.fill-90 {
    height: 90vh;
+ }
+
+.fill-80 {
+    height: 80vh;
+}
+
+.fill-60 {
+   height: 60vh;
  }
