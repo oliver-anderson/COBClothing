@@ -1,6 +1,21 @@
-<div id=wrapper>
-  <app-header></app-header>
-  <div id=content>
-    <router-outlet></router-outlet>
+<div class="container-fluid" id="container">
+  <div class="row sticky-top bg-dark" id="header">
+    <div class="col">
+      <app-header></app-header>
+    </div>
+  </div>
+  <div class="row" id="router">
+    <div class="col">
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  <div class="row bg-dark" id="footer">
+    <div class="col">
+      <div>
+        <app-footer></app-footer>
+      </div>
+    </div>
   </div>
 </div>
