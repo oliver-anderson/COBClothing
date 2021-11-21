@@ -1,7 +1,6 @@
 const db = require('../models');
 const Item = db.items;
 
-
 // Create and Save a new Item
 exports.create = (req, res) => {
   // Validate request
@@ -29,6 +28,23 @@ exports.create = (req, res) => {
         message:
           err.message || 'Some error occurred while creating the Item.'
       });
+    });
+};
+
+// Find a single Item with an id
+exports.findOne = (req, res) => {
+  const id = req.params.id;
+
+  Item.findById(id)
+    .then(data => {
+      if (!data)
+        res.status(404).send({ message: "Not found: Item with id " + id });
+      else res.send(data);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send({ message: "Error retrieving Item with id " + id });
     });
 };
 
@@ -112,93 +128,3 @@ exports.deleteAll = (req, res) => {
       });
     });
 };
-
-
-
-
-
-
-
-
-
-/*
-//create new item
-exports.create = (req, res) => {
-  //create item
-  const item = new Item({
-    product: req.body.product,
-    checkout: req.body.checkout ? req.body.checkout : false
-  });
-
-  //save item
-  item
-    .save(item)
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || 'Some error occurred while creating item'
-      });
-    });
-};
-
-//retrieve item
-exports.findAll = (req, res) => {
-  const product = req.query.product;
-  var condition = product ? { product: { $regex: new RegExp(product), $options: 'i' } } : {};
-
-  Item.find(condition)
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || 'Some error occurred while retrieving item'
-      });
-    });
-};
-
-//update item by id
-exports.update = (req, res) => {
-  if (!req.body) {
-    return res.status(400).send({
-      message: 'Data to update cannot be empty'
-    });
-  }
-
-  const id = req.params.id;
-
-  Item.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
-    .then(data => {
-      if (!data) {
-        res.status(404).send({
-          message: `Cannot update Item with id=${id}`
-        });
-      } else res.send({ message: 'Item was updated successfully'});
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: 'Error updating Item with id=' + id
-      });
-    });
-};
-
-//delete all items
-exports.deleteAll = (req, res) => {
-  Item.deleteMany({})
-    .then(data => {
-      res.send({
-        message: `${data.deletedCount} Items were deleted successfully`
-      });
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || 'Some error occurred while removing all Items'
-      });
-    });
-};
-*/

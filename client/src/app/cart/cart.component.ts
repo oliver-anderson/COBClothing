@@ -12,11 +12,26 @@ import { DataService } from '../data.service';
 export class CartComponent implements OnInit {
 
   carts?: Cart[];
+  cartItems?: Item[];
+  cartItem?: Item;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    //this.retrieveCart();
+    this.retrieveCart();
+    this.populateCartItems(1);
+  }
+
+  populateCartItems(id): void {
+    this.dataService.populateCart(id)
+      .subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 
   retrieveCart(): void {

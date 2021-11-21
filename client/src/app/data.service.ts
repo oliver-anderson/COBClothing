@@ -15,11 +15,19 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   //item API calls
+  getItem(id: any): Observable<Item> {
+    return this.http.get(`${itemUrl}/${id}`);
+  }
+
   getAllItems(): Observable<Item[]> {
     return this.http.get<Item[]>(itemUrl);
   }
 
   //cart API calls
+  populateCart(id: any): Observable<Cart> {
+    return this.http.get(`${cartUrl}/${id}`);
+  }
+
   getAllCarts(): Observable<Cart[]> {
     return this.http.get<Cart[]>(cartUrl);
   }
