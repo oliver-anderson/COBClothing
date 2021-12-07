@@ -4,4 +4,5 @@ export class Item {
   color?: string;
   size?: string;
   price?: number;
+  image?: string;
 }

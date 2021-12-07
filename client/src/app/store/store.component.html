@@ -3,16 +3,16 @@
     <div class="col-sm-3 p-5" *ngFor="let item of items; let i = index">
       <div class="card">
         <img
-          src="https://img.sonofatailor.com/images/customizer/product/White_O_Crew_Regular_NoPocket.jpg"
-          class="card-img-top" />
+          src="{{ item.image }}"
+          class="card-img-top" width="550" height="500"/>
         <div class="card-body">
           <h4 class="card-title">{{ item.product }}</h4>
           <p class="card-text">
             {{ item.color }} <br />
             {{ item.size }} <br />
-            {{ item.price }}
+            ${{ item.price }}
           </p>
-          <a class="btn btn-dark">Add to cart</a>
+          <a class="btn btn-dark">add to cart</a>
         </div>
       </div>
     </div>

@@ -12,7 +12,6 @@ exports.create = (req, res) => {
 
   // Create a Cart
   const cart = new Cart({
-    cartId: req.body.cartId,
     items: req.body.items,
     total: req.body.total,
     active: req.body.active ? req.body.active : true

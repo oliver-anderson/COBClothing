@@ -18,11 +18,12 @@ export class CartComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    //this.populateCartItems(1);
     this.retrieveCart();
-    this.populateCartItems(1);
+
   }
 
-  populateCartItems(id): void {
+  /*populateCartItems(id): void {
     this.dataService.populateCart(id)
       .subscribe(
         response => {
@@ -32,7 +33,7 @@ export class CartComponent implements OnInit {
           console.log(error);
         }
       );
-  }
+  }*/
 
   retrieveCart(): void {
     this.dataService.getAllCarts()
